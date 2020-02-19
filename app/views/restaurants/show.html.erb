@@ -1,2 +1,45 @@
-<h1>Restaurants#show</h1>
-<p>Find me in app/views/restaurants/show.html.erb</p>
+<div class="container w-75 mt-5 rounded">
+  <div class="card-wide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://source.unsplash.com/collection/312299/');">
+    <div class="card-category"><%= @restaurant.name %></div>
+  </div>
+</div>
+
+<div class="container w-75 d-flex flex-row justify-content-between mt-3 pl-3 pr-3 greyText">
+  <h4><%= @restaurant.address %></h4>
+  <h4><%= @restaurant.phone_number %></h4>
+</div>
+
+<div class="container w-75 d-flex flex-row justify-content-between mt-3 pl-3 pr-3">
+  <%= link_to 'Add a review', new_restaurant_review_path(@restaurant), class: "button-white" %>
+  <%= link_to 'Go back to all restos', restaurants_path, class: "button-white" %>
+</div>
+
+
+<div class="container w-75 mt-3 pl-3 pr-3">
+
+
+  <% @restaurant.reviews.each do |review| %>
+    <div class="card-product-1 mt-5 w-100">
+        <div class="card-product-infos d-flex flex-row justify-content-between w-100">
+          <div>
+            <h3 class="mb-3">Thoughts on your experience</h3>
+            <p class="review-content"><%= review.content %></p>
+          </div>
+          <div>
+            <h3 class="mb-2">Rating</h3>
+            <% "#{review.rating}".to_i.times do %>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <% end %>
+          </div>
+        </div>
+      </div>
+  <% end %>
+
+</div>
+
+
+
+
+
+
+
